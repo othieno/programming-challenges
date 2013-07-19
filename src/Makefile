@@ -28,9 +28,10 @@ CXXFLAGS = -Wall -Werror -pedantic -g
 
 # Build targets.
 TARGETS =\
-	110101.3nplusone
+	110101.3nplusone \
+	110102.minesweeper
 
-#
+# Build all targets.
 all: $(TARGETS)
 
 % :: ./%.c Makefile
@@ -42,4 +43,4 @@ all: $(TARGETS)
 	@$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
-	@rm $(TARGETS)
+	@rm -f $(TARGETS)
