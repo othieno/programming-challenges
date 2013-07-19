@@ -26,28 +26,28 @@
 
 int main(int argc, char** argv)
 {
-	/**
-	 * Input values are less than 10^6 (32-bit integers at least)
-	 * and greater than zero (unsigned).
-	 */
-	uint32_t i, j;
+   /**
+    * Input values are less than 10^6 (32-bit integers at least)
+    * and greater than zero (unsigned).
+    */
+   uint32_t i, j;
 
-	while (scanf("%u %u", &i, &j) != EOF)
-	{
-		const uint32_t min = (i < j)    ? i : j;
-		const uint32_t max = (i != min) ? i : j;
+   while (scanf("%u %u", &i, &j) != EOF)
+   {
+      const uint32_t min = (i < j)    ? i : j;
+      const uint32_t max = (i != min) ? i : j;
 
-		uint32_t m = min;
-		uint32_t maxlen = 0;
-		for (; m <= max; ++m)
-		{
-			uint32_t n = m;
-			uint32_t len = 1;
-			for (; n != 1; (n = n & 1 ? (3 * n) + 1 : n >> 1), ++len) ;
-			maxlen = len > maxlen ? len : maxlen;
-		}
-		printf("%u %u %u\n", i, j, maxlen);
-	}
-	return 0;
+      uint32_t m = min;
+      uint32_t maxlen = 0;
+      for (; m <= max; ++m)
+      {
+         uint32_t n = m;
+         uint32_t len = 1;
+         for (; n != 1; (n = n & 1 ? (3 * n) + 1 : n >> 1), ++len) ;
+         maxlen = len > maxlen ? len : maxlen;
+      }
+      printf("%u %u %u\n", i, j, maxlen);
+   }
+   return 0;
 }
 
