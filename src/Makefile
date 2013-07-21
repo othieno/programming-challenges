@@ -29,7 +29,8 @@ CXXFLAGS = -Wall -Werror -pedantic -g
 # Build targets.
 TARGETS =\
 	110101.3nplusone \
-	110102.minesweeper
+	110102.minesweeper \
+	110103.trip
 
 # Build all targets.
 all: $(TARGETS)
