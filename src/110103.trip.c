@@ -27,8 +27,7 @@
 int main(int argc, char** argv)
 {
    /**
-    * The number of students on the trip, of which there can be no more than 1000.
-    * the amount spent by each student on the trip, and the amount exchanged.
+    * The number of students on the trip, of whom there can be no more than 1000.
     */
    uint32_t nStudents = 0;
    /**
@@ -52,27 +51,28 @@ int main(int argc, char** argv)
       double amountTaken = 0;
       double amountExchanged = 0.01;
 
-      int i = 0;
-      for (; i < nStudents; ++i)
+      uint32_t i = 0;
+      uint32_t* currentAmountSpent = amountSpent;
+      for (; i < nStudents; ++i, ++currentAmountSpent)
       {
          uint32_t dollars, cents;
          scanf("%u.%u", &dollars, &cents);
-         amountSpent[i] = (dollars * 100) + cents;
-         totalAmountSpent += amountSpent[i];
+         *currentAmountSpent = (dollars * 100) + cents;
+         totalAmountSpent += *currentAmountSpent;
       }
       averageAmountSpent = totalAmountSpent / (double)nStudents;
       /**
        * Calculate the exchanged amount.
        */
-      for (i = 0; i < nStudents; ++i)
+      for (currentAmountSpent = amountSpent; nStudents-- > 0; ++currentAmountSpent)
       {
-         const int32_t dAmount = averageAmountSpent - amountSpent[i];
-         if (dAmount < 0)
-            amountTaken -= dAmount;
+         const int32_t dAmountSpent = averageAmountSpent - *currentAmountSpent;
+         if (dAmountSpent < 0)
+            amountTaken -= dAmountSpent;
          else
-            amountGiven += dAmount;
+            amountGiven += dAmountSpent;
       }
-      amountExchanged *= amountTaken > amountGiven ? amountTaken : amountGiven;
+      amountExchanged *= (amountTaken > amountGiven) ? amountTaken : amountGiven;
       printf("$%.2f\n", amountExchanged);
    }
    return 0;
