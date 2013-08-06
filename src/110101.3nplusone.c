@@ -34,14 +34,13 @@ int main(int argc, char** argv)
 
    while (scanf("%u %u", &i, &j) != EOF)
    {
-      const uint32_t min = (i < j)    ? i : j;
+      uint32_t min = (i < j) ? i : j;
       const uint32_t max = (i != min) ? i : j;
 
-      uint32_t m = min;
       uint32_t maxlen = 0;
-      for (; m <= max; ++m)
+      for (; min <= max; ++min)
       {
-         uint32_t n = m;
+         uint32_t n = min;
          uint32_t len = 1;
          for (; n != 1; (n = n & 1 ? (3 * n) + 1 : n >> 1), ++len) ;
          maxlen = len > maxlen ? len : maxlen;
