@@ -30,7 +30,8 @@ CXXFLAGS = -Wall -Werror -pedantic -g
 TARGETS =\
 	110101.3nplusone \
 	110102.minesweeper \
-	110103.trip
+	110103.trip \
+	110401.vitos.family
 
 # Build all targets.
 all: $(TARGETS)
